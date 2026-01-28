@@ -97,4 +97,4 @@ curl http://localhost:8000/health
 
 ## Project Origin
 
-This module was extracted from the `airport-customer` project as a reusable component.
+This module was extracted from the `customer` project as a reusable component.
