@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import List
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from .config import Settings
@@ -46,6 +47,15 @@ def create_app() -> FastAPI:
     """Create FastAPI application."""
     settings = Settings.from_env()
     app = FastAPI(title="Embedding Service API")
+    
+    # Add CORS middleware for web UI
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],  # Allow all origins
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
     
     # Initialize clients
     try:
